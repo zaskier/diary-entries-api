@@ -1,0 +1,29 @@
+{
+  "name": "diary-entries-api",
+  "version": "1.0.0",
+  "description": "The main component of the application backend. It will enable the mobile app to actually view and manage the diary entries.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaskier/diary-entries-api.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "Wojciech Iskierka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaskier/diary-entries-api/issues"
+  },
+  "homepage": "https://github.com/zaskier/diary-entries-api#readme",
+  "devDependencies": {
+    "eslint": "^7.17.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "mongoose": "^5.11.9"
+  }
+}
