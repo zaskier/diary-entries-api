@@ -4,9 +4,7 @@ function routes(Diary){
     const diaryRouter= express.Router();
     diaryRouter.route('/diary')
     .get((req, res)=>{
-    //const response = {hello: 'Diary example'};
-    //const {query} = req;
-    //?_id=5ff21dc34cdff75fc448f0d5 replace with userID
+
     const query = {};
     if (req.query._id) {
         query._id = req.query._id;
@@ -15,7 +13,7 @@ function routes(Diary){
     if(err){
       return res.send(err);  
     } else {
-       return res.json(diary)  //small vs big mon vs 
+       return res.json(diary) 
     }
     });
     })
@@ -26,7 +24,32 @@ function routes(Diary){
     
         diary.save();
         return res.status(201).json(diary);
-      });    
+      });
+
+   diaryRouter.route('/diary/:entryID')
+   .get((req, res) => {
+     Diary.findById(req.params.entryID, (err, diary) => {
+       if (err) {
+         return res.send(err);
+       }
+       return res.json(diary);
+     });
+   })
+   .put((req, res) => {
+     Diary.findById(req.params.entryID, (err, diary) => {
+        if (err) {
+          return res.send(err);
+        }
+        diary.userID = req.body.userID;
+        diary.title = req.body.title;
+        diary.Content = req.body.Content; //TODO replace with small letter 
+        diary.weather = req.body.weather;
+        diary.save();
+        return res.json(diary);
+      });
+    });
+
+
       return diaryRouter
 }
 
