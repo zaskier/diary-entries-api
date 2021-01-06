@@ -5,7 +5,8 @@ function diaryController(Diary){
         console.log(diary);
     
         diary.save();
-        return res.status(201).json(diary);
+        res.status(201);
+        return res.json(diary);
     }
     function get(req, res) {
         const query = {};

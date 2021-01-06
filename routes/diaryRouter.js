@@ -1,8 +1,13 @@
 const express = require('express');
+const diaryController = require('../controllers/diaryController');
 
 function routes(Diary){
     const diaryRouter= express.Router();
+    const controller = diaryController(Diary);
     diaryRouter.route('/diary')
+    .get(controller.get)
+    .post(controller.post)
+        
     .get((req, res)=>{
 
     const query = {};
@@ -17,6 +22,9 @@ function routes(Diary){
     }
     });
     })
+   
+
+    /*
     .post((req, res) => {
         const diary = new Diary(req.body);
         console.log('record was added');
@@ -25,7 +33,7 @@ function routes(Diary){
         diary.save();
         return res.status(201).json(diary);
       });
-
+*/
    diaryRouter.use('/diary/:entryID', (req, res, next) =>{
     Diary.findById(req.params.entryID, (err, diary) => {
         if (err) {
