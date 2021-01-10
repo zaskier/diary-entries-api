@@ -9,8 +9,8 @@ describe('Diary Controller Tests:', () => {
       const req = {
         body: {
             userID: 'wojciech.iskierka@protonmail.com',
-                title: "71th entry",
-    content: "test 71 contetnt"
+            title: "71th entry",
+            content: "test 71 contetnt"
         }
       };
 
