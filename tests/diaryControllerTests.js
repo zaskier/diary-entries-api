@@ -4,12 +4,13 @@ const diaryController = require('../controllers/diaryController');
 
 describe('Diary Controller Tests:', () => {
   describe('Post', () => {
-    it('should not allow an empty title on post', () => {
+    it('should not allow an empty title or content on post', () => {
       const Diary = function (diary) { this.save = () => {}};
-
       const req = {
         body: {
-            userID: 'wojciech.iskierka@protonmail.com'
+            userID: 'wojciech.iskierka@protonmail.com',
+                title: "71th entry",
+    content: "test 71 contetnt"
         }
       };
 
