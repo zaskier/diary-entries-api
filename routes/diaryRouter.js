@@ -7,33 +7,7 @@ function routes(Diary){
     diaryRouter.route('/diary')
     .get(controller.get)
     .post(controller.post)
-        
-    .get((req, res)=>{
 
-    const query = {};
-    if (req.query._id) {
-        query._id = req.query._id;
-      }
-    Diary.find(query, (err, diary) =>{
-    if(err){
-      return res.send(err);  
-    } else {
-       return res.json(diary) 
-    }
-    });
-    })
-   
-
-    /*
-    .post((req, res) => {
-        const diary = new Diary(req.body);
-        console.log('record was added');
-        console.log(diary);
-    
-        diary.save();
-        return res.status(201).json(diary);
-      });
-*/
    diaryRouter.use('/diary/:entryID', (req, res, next) =>{
     Diary.findById(req.params.entryID, (err, diary) => {
         if (err) {
@@ -52,7 +26,7 @@ function routes(Diary){
             const {diary} = req;
             diary.userID = req.body.userID;
             diary.title = req.body.title;
-            diary.Content = req.body.Content; //TODO replace with small letter 
+            diary.content = req.body.content; 
             diary.weather = req.body.weather;
             req.diary.save((err) => {
                 if (err) {
@@ -63,7 +37,6 @@ function routes(Diary){
      })
     .patch((req, res) =>{
          const {diary} = req;
-        // ${typeof req.body.userID === "undefined"  ? `` : `${req.body.userID}",`}
         if (req.body._id){
             delete req.body._id;
         }
