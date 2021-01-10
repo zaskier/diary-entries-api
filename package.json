@@ -23,10 +23,12 @@
     "eslint": "^7.17.0",
     "mocha": "^8.2.1",
     "should": "^13.2.3",
-    "sinon": "^9.2.3"
+    "sinon": "^9.2.3",
+    "supertest": "^6.0.1"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "mongoose": "^5.11.9"
+    "mongoose": "^5.11.9",
+    "node-fetch": "^2.6.1"
   }
 }
